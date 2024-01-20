@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <script src="./libs/p5.min.js"></script>
+    <script>
+      let position;
+
+      function setup() {
+        createCanvas(500, 500);
+        background(100);
+
+        canvas.style.position = "fixed";
+        canvas.style.top = "50%";
+        canvas.style.left = "50%";
+        canvas.style.transform = "translate(-50%, -50%)";
+
+        position = createVector(width / 2, height / 2);
+      }
+
+      const DIRECTIONS = ["TOP", "DOWN", "LEFT", "RIGHT"];
+
+      function draw() {
+        // background(200);
+        stroke(255);
+        strokeWeight(2);
+        point(position);
+
+        const index = floor(random(DIRECTIONS.length));
+
+        const randomDirection = DIRECTIONS[index];
+
+        switch (randomDirection) {
+          case "TOP":
+            position.add(0, -1);
+            break;
+          case "DOWN":
+            position.add(0, 1);
+            break;
+          case "LEFT":
+            position.add(-1, 0);
+            break;
+          case "RIGHT":
+            position.add(1, 0);
+            break;
+
+          default:
+            break;
+        }
+      }
+    </script>
+  </body>
+</html>
