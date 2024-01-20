@@ -1,7 +1,6 @@
-- name: Upload S3
-  uses: shallwefootball/upload-s3-action@v1.3.3
-
 name: Upload to S3
+
+uses: shallwefootball/upload-s3-action@v1.3.3
 
 on: [push]
 
