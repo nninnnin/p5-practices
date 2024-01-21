@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <script src="./libs/p5.min.js"></script>
+    <script>
+      function setup() {
+        createCanvas(400, 400);
+      }
+
+      function draw() {
+        // sin()?
+        // -1에서 1 사이의 값으로 매핑할 수 있다.
+        // 무언가를 무한하게 반복하고 싶을 때 사용할 수 있다.
+
+        // map()?
+        // 숫자의 범위를 다른 범위로 다시 매핑한다
+        // -1에서 1 사이의 값을 갖는 infiniteNumber를 0~255 사이의 값으로 매핑시킨다.
+        const infiniteNumber = sin(frameCount * 0.25);
+        const backgroundNumber = map(infiniteNumber, -1, 1, 0, 255);
+
+        background(backgroundNumber);
+      }
+    </script>
+  </body>
+</html>
