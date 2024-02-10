@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <script src="./libs/p5.min.js"></script>
+    <script src="./libs/p5.sound.min.js"></script>
+    <script>
+      let osc;
+
+      function setup() {
+        noCanvas();
+
+        osc = new p5.Oscillator();
+        console.log(osc);
+
+        osc.freq(220); // 220Hz
+        osc.setType("sine");
+        osc.amp(0.5);
+        osc.start();
+      }
+
+      function draw() {
+        // add panning!
+        const number = sin(frameCount * 0.025);
+        console.log(number);
+        osc.pan(number);
+
+        // control amplitude and frequency of oscillator according to position of mouse
+        osc.freq(map(mouseX, 0, width, 40, 80));
+        osc.amp(map(mouseY, 0, height, 0, 1));
+      }
+
+      function mousePressed() {
+        if (osc.started) {
+          osc.stop();
+        } else {
+          osc.start();
+        }
+      }
+    </script>
+  </body>
+</html>
